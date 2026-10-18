@@ -279,6 +279,7 @@ h4 {
 
 /* tote */
 #p-rush { grid-template-columns: 1fr 1.2fr 1fr; }
+#p-rush .case-title { font-size: clamp(30px, 3.3vw, 60px); }
 .tote { position: relative; width: 280px; margin: 40px auto 0; }
 .tote-handle {
   width: 150px; height: 120px; margin: 0 auto -30px;
@@ -481,7 +482,7 @@ body.loaded .pl-inner { opacity: 0; transform: scale(.94); }
 }
 
 /* ---------- Split-text headlines ---------- */
-[data-split] .w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: .06em; margin-bottom: -.06em; }
+[data-split] .w { display: inline-block; white-space: nowrap; overflow: hidden; vertical-align: bottom; padding-bottom: .06em; margin-bottom: -.06em; }
 [data-split] .c {
   display: inline-block;
   transform: translateY(110%) rotate(8deg);
