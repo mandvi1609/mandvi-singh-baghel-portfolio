@@ -8,8 +8,5 @@ A one-page, editorial-style portfolio for luxury & premium brand marketing.
 Open `index.html` in a browser, or enable **GitHub Pages** (Settings → Pages → Deploy from branch → `main` / root).
 
 ## Add your photo
-Put your photo at `assets/photo.jpg`, then in `index.html` replace the `<span class="photo-initials">MSB</span>` inside `.photo` (and the polaroid) with:
+Photos live in `assets/` — `mandvi-campus.jpg` (About Me) and `mandvi-portrait.jpg` (Get in Touch polaroid). Replace those files to change them.
 
-```html
-<img src="assets/photo.jpg" alt="Mandvi Singh Baghel">
-```

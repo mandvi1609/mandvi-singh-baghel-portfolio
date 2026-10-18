@@ -107,7 +107,7 @@ h4 {
   display: grid; place-items: center; overflow: hidden;
   box-shadow: 0 40px 80px -30px rgba(0,0,0,.5);
 }
-.photo img { width: 100%; height: 100%; object-fit: cover; }
+.photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
 .photo-initials { font-family: var(--script); font-size: 96px; color: #d8c7a6; }
 
 .year-pill {
@@ -338,11 +338,11 @@ h4 {
 }
 .polaroid-back { transform: rotate(7deg) translate(14px, 8px); }
 .polaroid-front { transform: rotate(-6deg); display: grid; place-items: center; }
-.polaroid-front::before {
-  content: ''; position: absolute; inset: 12px 12px 48px;
-  background: linear-gradient(160deg, #3a3633, #121110 70%);
+.polaroid-front img {
+  position: absolute; inset: 12px 12px 48px;
+  width: calc(100% - 24px); height: calc(100% - 60px);
+  object-fit: cover; object-position: 50% 28%;
 }
-.polaroid-front .photo-initials { position: relative; font-size: 64px; margin-bottom: 36px; }
 .contact-lines { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; font-size: 15px; }
 .cv-pill {
   margin-top: 14px; border: 1.5px solid var(--ink); border-radius: 30px;
