@@ -349,6 +349,17 @@ h4 {
   padding: 6px 22px; font-family: var(--heading); font-size: 13px; transition: all .2s;
 }
 .cv-pill:hover { background: var(--ink); color: #fff; }
+.cv-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.cv-pill.solid, .dl-btn { background: var(--ink); color: #fff; }
+.cv-pill.solid:hover, .dl-btn:hover { background: var(--gold); border-color: var(--gold); }
+.connect a.dl-btn {
+  margin-top: 14px; align-self: flex-start;
+  border: 1.5px solid var(--ink); border-radius: 30px; padding: 8px 22px;
+  font-family: var(--heading); font-size: 12px; letter-spacing: .04em; color: #fff; transition: all .2s;
+}
+.connect a.dl-btn:hover { color: #fff; }
+.nav-links a.nav-cta { border: 1.5px solid var(--ink); border-radius: 30px; padding: 4px 14px; color: var(--ink); }
+.nav-links a.nav-cta:hover { background: var(--ink); color: #fff; }
 footer { margin-top: 70px; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
 
 /* ---------- REVEAL ANIMATION ---------- */
@@ -366,7 +377,9 @@ footer { margin-top: 70px; font-size: 11px; letter-spacing: .18em; text-transfor
 @media (max-width: 560px) {
   .slide { padding: 100px 16px 70px; }
   .nav { padding: 14px 16px; }
-  .nav-links a:nth-child(2) { display: none; }
+  .nav-links a:nth-child(1), .nav-links a:nth-child(2) { display: none; }
+  .nav-links { align-items: center; }
+  .nav-links a { white-space: nowrap; }
   .phone-stack { height: 340px; }
   .touch-pill { padding: 18px 26px; }
   .flow-step:nth-child(even) { margin-left: 16px; }
