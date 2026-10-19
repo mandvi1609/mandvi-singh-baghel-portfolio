@@ -2,15 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#121212">
   <title>Mandvi Singh Baghel — Luxury Marketing Portfolio</title>
   <meta name="description" content="Luxury marketing portfolio of Mandvi Singh Baghel, MBA Marketing candidate at Universal AI University.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@200;300;400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="is-loading">
+
+  <!-- Reusable Apple mark -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="apple" viewBox="0 0 24 24"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></symbol>
+    <symbol id="ig" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5z"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor"/></symbol>
+  </svg>
 
   <!-- Opening curtain -->
   <div class="preloader" aria-hidden="true">
@@ -27,12 +34,18 @@
   <!-- Gold wipe for in-page jumps -->
   <div class="wipe" aria-hidden="true"><span>M.S.B</span></div>
 
-  <div class="progress" aria-hidden="true"></div>
+  <!-- Back-to-top shutter -->
+  <div class="shutter" aria-hidden="true">
+    <i></i><i></i><i></i><i></i><i></i>
+    <div class="shutter-text"><b>M.S.B</b><span>back to the beginning</span></div>
+  </div>
+
   <div class="cursor-dot" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true"><span></span></div>
   <div class="grain" aria-hidden="true"></div>
 
-  <nav class="nav">
+  <!-- Full navigation (top of page) -->
+  <nav class="nav" aria-label="Main">
     <a href="#about" class="nav-mark">M.S.B</a>
     <div class="nav-links">
       <a href="#about">About</a>
@@ -42,6 +55,47 @@
       <a href="assets/Mandvi_Singh_Baghel_Resume.pdf" download class="nav-cta" data-magnetic>Resume ↓</a>
     </div>
   </nav>
+
+  <!-- Collapsed navigation: fills as you scroll, takes you home when full -->
+  <button class="msb-pill" type="button" aria-label="Open menu">
+    <span class="pill-fill"></span>
+    <span class="pill-mark">M.S.B</span>
+    <span class="pill-pct">0%</span>
+    <span class="pill-top">Back to top ↑</span>
+  </button>
+
+  <div class="menu" aria-hidden="true">
+    <div class="menu-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="assets/Mandvi_Singh_Baghel_Resume.pdf" download>Resume ↓</a>
+    </div>
+    <p class="menu-foot script">Mandvi Singh Baghel</p>
+  </div>
+
+  <!-- Project gallery overlay -->
+  <div class="gallery" aria-hidden="true" role="dialog" aria-label="Project photos">
+    <div class="gallery-bg"></div>
+    <div class="gallery-head">
+      <span class="gallery-kicker"></span>
+      <h3 class="gallery-title"></h3>
+    </div>
+    <div class="gallery-grid"></div>
+    <div class="gallery-actions">
+      <a class="gallery-case" href="#">Read the case study →</a>
+      <button class="gallery-close" type="button" aria-label="Close gallery">✕</button>
+    </div>
+  </div>
+
+  <div class="lightbox" aria-hidden="true" role="dialog" aria-label="Photo viewer">
+    <img alt="">
+    <button class="lb-prev" type="button" aria-label="Previous photo">←</button>
+    <button class="lb-next" type="button" aria-label="Next photo">→</button>
+    <button class="lb-close" type="button" aria-label="Close photo">✕</button>
+    <span class="lb-count"></span>
+  </div>
 
   <!-- ============ ABOUT ME ============ -->
   <section id="about" class="slide about">
@@ -53,7 +107,6 @@
     </div>
 
     <div class="about-text reveal">
-      <div class="year-pill">2026<span>portfolio</span></div>
       <h1 data-split class="ghost-title" data-text="ABOUT ME">ABOUT ME</h1>
       <p class="script">Mandvi Singh Baghel</p>
       <p class="lead">
@@ -72,6 +125,7 @@
         <a href="mailto:mandvibaghel04@gmail.com"><span class="ico">✉</span>mandvibaghel04@gmail.com</a>
         <a href="tel:+919685214751"><span class="ico">☏</span>+91 96852 14751</a>
         <a href="https://www.linkedin.com/in/mandvi-singh-baghel-141588255" target="_blank" rel="noopener"><span class="ico">in</span>Mandvi Singh Baghel</a>
+        <a href="https://www.instagram.com/mandvi_04/" target="_blank" rel="noopener"><span class="ico"><svg><use href="#ig"/></svg></span>@mandvi_04</a>
         <a class="dl-btn" data-magnetic href="assets/Mandvi_Singh_Baghel_Resume.pdf" download>Download Resume ↓</a>
       </div>
     </div>
@@ -130,19 +184,22 @@
   <!-- ============ PROJECTS (FOLDERS) ============ -->
   <section id="projects" class="slide projects">
     <h2 data-split class="big-title center reveal">PROJECTS</h2>
+    <p class="folders-hint reveal">Tap a folder to open the photos</p>
     <div class="folders">
-      <a href="#p-apple" class="folder reveal" data-cursor="Open"><div class="folder-ico"><span class="sheet">case</span></div><span>APPLE PREMIUM RETAIL</span></a>
-      <a href="#p-safar" class="folder reveal" data-cursor="Open"><div class="folder-ico"><span class="sheet">case</span></div><span>SAFARCABBY</span></a>
-      <a href="#p-rush" class="folder reveal" data-cursor="Open"><div class="folder-ico"><span class="sheet">case</span></div><span>RUSH4RUSH</span></a>
-      <a href="#p-akriti" class="folder reveal" data-cursor="Open"><div class="folder-ico"><span class="sheet">case</span></div><span>AKRITI FABRICATION</span></a>
+      <a href="#p-apple" class="folder reveal" data-gallery="apple" data-cursor="Open"><div class="folder-ico"><span class="sheet"></span><span class="sheet"></span><span class="sheet"></span></div><span>APPLE PREMIUM RETAIL</span></a>
+      <a href="#p-gsb" class="folder reveal" data-gallery="gsb" data-cursor="Open"><div class="folder-ico"><span class="sheet"></span><span class="sheet"></span><span class="sheet"></span></div><span>GSB — GLOBAL SHIRT BOX</span></a>
+      <a href="#p-rush" class="folder reveal" data-gallery="rush" data-cursor="Open"><div class="folder-ico"><span class="sheet"></span><span class="sheet"></span><span class="sheet"></span></div><span>RUSH4RUSH</span></a>
+      <a href="#p-smart" class="folder reveal" data-gallery="smart" data-cursor="Open"><div class="folder-ico"><span class="sheet"></span><span class="sheet"></span><span class="sheet"></span></div><span>SMART PROJECT</span></a>
+      <a href="#p-safar" class="folder reveal" data-cursor="View"><div class="folder-ico"><span class="sheet"></span><span class="sheet"></span><span class="sheet"></span></div><span>SAFARCABBY</span></a>
+      <a href="#p-akriti" class="folder reveal" data-cursor="View"><div class="folder-ico"><span class="sheet"></span><span class="sheet"></span><span class="sheet"></span></div><span>AKRITI FABRICATION</span></a>
     </div>
   </section>
 
-  <!-- ============ PROJECT 1 — APPLE @ VIJAY SALES ============ -->
+  <!-- ============ PROJECT — APPLE @ VIJAY SALES ============ -->
   <section id="p-apple" class="slide case">
     <div class="case-left reveal">
       <h2 data-split class="case-title">APPLE<br>PREMIUM RETAIL</h2>
-      <div class="logo-circle"><span></span></div>
+      <div class="logo-circle"><svg><use href="#apple"/></svg></div>
 
       <div class="card">
         <h4>DETAILS:</h4>
@@ -158,14 +215,59 @@
     </div>
 
     <div class="case-right reveal">
-      <div class="phone-stack" data-tilt>
-        <div class="phone"><div class="screen s1"><small>iPhone</small><b>Designed<br>to be loved.</b></div></div>
-        <div class="tile t1"><b>Mac</b></div>
-        <div class="tile t2"><b>iPad</b></div>
-        <div class="tile t3"><b>AirPods</b></div>
-        <div class="tile t4"><small>Ecosystem</small></div>
-        <div class="tile t5"><small>EMI made easy</small></div>
+      <div class="devices" data-tilt>
+        <!-- iPhone -->
+        <div class="iphone">
+          <div class="iphone-screen">
+            <div class="aurora"><i></i><i></i><i></i></div>
+            <div class="island"></div>
+            <div class="ios-time"><small>Monday, 18 May</small><b>9:41</b></div>
+            <svg class="hello" viewBox="0 0 300 120" aria-hidden="true">
+              <path d="M20 88 C 40 60, 52 22, 46 18 C 38 14, 30 60, 28 92 C 34 70, 48 58, 58 62 C 66 66, 58 84, 66 88 C 76 92, 92 78, 100 70 C 106 64, 102 56, 94 60 C 84 66, 84 88, 98 90 C 112 92, 124 76, 134 56 C 144 34, 146 16, 138 18 C 128 22, 124 66, 132 88 C 138 98, 152 80, 162 56 C 172 32, 172 16, 164 18 C 154 22, 152 70, 160 88 C 166 98, 180 86, 188 74 C 196 62, 214 58, 220 70 C 226 84, 210 96, 198 88 C 190 80, 198 64, 212 66 C 226 68, 240 74, 256 70"/>
+            </svg>
+            <div class="ios-dock"><span></span><span></span><span></span><span></span></div>
+          </div>
+          <span class="iphone-btn"></span>
+        </div>
+
+        <div class="device-col">
+          <!-- Apple Watch -->
+          <div class="watch">
+            <span class="watch-crown"></span>
+            <div class="watch-screen">
+              <svg viewBox="0 0 100 100" class="rings" aria-hidden="true">
+                <circle class="track r1" cx="50" cy="50" r="40"/><circle class="ring r1" cx="50" cy="50" r="40"/>
+                <circle class="track r2" cx="50" cy="50" r="29"/><circle class="ring r2" cx="50" cy="50" r="29"/>
+                <circle class="track r3" cx="50" cy="50" r="18"/><circle class="ring r3" cx="50" cy="50" r="18"/>
+              </svg>
+              <svg class="watch-logo"><use href="#apple"/></svg>
+            </div>
+          </div>
+          <!-- AirPods Pro -->
+          <div class="airpods">
+            <div class="ap-lid"></div>
+            <div class="ap-case">
+              <span class="ap-bud l"></span><span class="ap-bud r"></span>
+              <span class="ap-led"></span>
+            </div>
+            <div class="ap-card"><svg><use href="#apple"/></svg><span>AirPods Pro<br><small>Connected · 100%</small></span></div>
+          </div>
+        </div>
+
+        <!-- MacBook -->
+        <div class="macbook">
+          <div class="mac-screen">
+            <div class="mac-wall">
+              <img src="assets/projects/apple-07-sm.jpg" alt="Back to School display at Vijay Sales" loading="lazy">
+            </div>
+            <div class="mac-bar"><svg><use href="#apple"/></svg><span>Finder</span><span>File</span><span>Edit</span><em>Mon 9:41</em></div>
+            <div class="mac-dock"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <span class="notch"></span>
+          </div>
+          <div class="mac-base"></div>
+        </div>
       </div>
+
       <div class="card approach">
         <h4>APPROACH:</h4>
         <ul>
@@ -176,6 +278,8 @@
       </div>
     </div>
 
+    <div class="case-gallery reveal" data-gallery="apple"></div>
+
     <div class="stats reveal">
       <div><b data-count="4">4</b><span>Product lines<br>handled</span></div>
       <div><b data-count="3">3</b><span>Teams<br>coordinated</span></div>
@@ -184,8 +288,41 @@
     </div>
   </section>
 
-  <!-- ============ PROJECT 2 — SAFARCABBY ============ -->
-  <section id="p-safar" class="slide case alt">
+  <!-- ============ PROJECT — GSB ============ -->
+  <section id="p-gsb" class="slide case alt">
+    <div class="case-left reveal">
+      <h2 data-split class="case-title">GSB<br>GLOBAL SHIRT BOX</h2>
+      <p class="script">where the shirt begins</p>
+      <div class="card">
+        <h4>DETAILS:</h4>
+        <p><b>Brand:</b> GSB — Global Shirt Box</p>
+        <p><b>Industry:</b> Apparel · Shirting</p>
+        <p><b>Project:</b> CMAPS Live Project</p>
+        <h4 class="mt">GOAL:</h4>
+        <p>Understand a shirt brand from the inside — from print and fabric to the rack — and see how product craft becomes a brand story customers pay a premium for.</p>
+      </div>
+    </div>
+    <div class="case-right reveal">
+      <div class="swatch-stack" data-tilt>
+        <img src="assets/projects/gsb-02-sm.jpg" alt="GSB shirt print designs" loading="lazy">
+        <img src="assets/projects/gsb-03-sm.jpg" alt="Fabric stock at GSB" loading="lazy">
+        <img src="assets/projects/gsb-04-sm.jpg" alt="Shirts on the rack at GSB" loading="lazy">
+      </div>
+      <div class="card">
+        <h4>WHAT I EXPLORED:</h4>
+        <ul>
+          <li>Print &amp; design range — how patterns are developed for each collection.</li>
+          <li>Fabric stock and sourcing — the material quality behind the product.</li>
+          <li>Merchandising on the rack — how the range is presented to buyers.</li>
+          <li>Working sessions with the GSB team on the business and its customers.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="case-gallery reveal" data-gallery="gsb"></div>
+  </section>
+
+  <!-- ============ PROJECT — SAFARCABBY ============ -->
+  <section id="p-safar" class="slide case solo">
     <h2 data-split class="case-title center reveal">BRAND PLAYBOOK <em class="script small">SafarCabby</em></h2>
 
     <div class="laptop-wrap reveal">
@@ -225,7 +362,7 @@
     </div>
   </section>
 
-  <!-- ============ PROJECT 3 — RUSH4RUSH ============ -->
+  <!-- ============ PROJECT — RUSH4RUSH ============ -->
   <section id="p-rush" class="slide case">
     <div class="case-left reveal">
       <div class="card">
@@ -242,12 +379,79 @@
 
     <div class="case-center reveal">
       <h2 data-split class="case-title center">EVENT EXPERIENCE <em class="script small">campaign</em></h2>
+
+      <!-- Canvas tote, like the reel -->
       <div class="tote" data-tilt>
-        <div class="tote-handle"></div>
-        <div class="tote-body">
-          <div class="tote-cards"><span></span><span></span><span></span></div>
-          <b>RUSH<br>4<br>RUSH</b>
-        </div>
+        <svg viewBox="0 0 400 540" role="img" aria-label="Canvas tote bag holding Rush4Rush photos">
+          <defs>
+            <filter id="canvasTex" x="0" y="0" width="100%" height="100%">
+              <feTurbulence type="fractalNoise" baseFrequency=".9 .55" numOctaves="3" seed="7" result="n"/>
+              <feColorMatrix in="n" type="saturate" values="0" result="g"/>
+              <feComponentTransfer in="g" result="g2"><feFuncA type="linear" slope=".22"/></feComponentTransfer>
+              <feComposite in="g2" in2="SourceGraphic" operator="in" result="tex"/>
+              <feBlend in="SourceGraphic" in2="tex" mode="multiply"/>
+            </filter>
+            <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="14"/></filter>
+            <filter id="print"><feTurbulence type="fractalNoise" baseFrequency="1.6" numOctaves="1" seed="3"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>
+            <linearGradient id="canvasFront" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0" stop-color="#d9d3c6"/>
+              <stop offset=".12" stop-color="#ece7dc"/>
+              <stop offset=".35" stop-color="#f5f1e8"/>
+              <stop offset=".52" stop-color="#e9e3d6"/>
+              <stop offset=".62" stop-color="#f3efe5"/>
+              <stop offset=".86" stop-color="#e8e2d5"/>
+              <stop offset="1" stop-color="#cfc8b9"/>
+            </linearGradient>
+            <linearGradient id="canvasShade" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0" stop-color="#000" stop-opacity=".16"/>
+              <stop offset=".12" stop-color="#000" stop-opacity="0"/>
+              <stop offset=".8" stop-color="#000" stop-opacity="0"/>
+              <stop offset="1" stop-color="#000" stop-opacity=".14"/>
+            </linearGradient>
+            <linearGradient id="inside" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0" stop-color="#b9b1a1"/><stop offset="1" stop-color="#8f8778"/>
+            </linearGradient>
+            <clipPath id="frontClip"><path d="M58 168 L342 168 Q352 330 366 486 Q368 500 352 502 L48 502 Q32 500 34 486 Q48 330 58 168 Z"/></clipPath>
+          </defs>
+
+          <ellipse cx="200" cy="512" rx="170" ry="18" fill="#000" opacity=".28" filter="url(#soft)"/>
+
+          <!-- back handle -->
+          <path d="M128 176 C 122 40, 278 40, 272 176" fill="none" stroke="#c9c2b3" stroke-width="22" stroke-linecap="round"/>
+          <!-- back panel / inside -->
+          <path d="M62 170 Q200 150 338 170 L342 190 L58 190 Z" fill="url(#inside)"/>
+
+          <!-- contents -->
+          <g class="tote-item i1"><rect x="78" y="70" width="128" height="160" rx="4" fill="#fbfaf7" transform="rotate(-11 142 150)"/><image href="assets/projects/rush-01-sm.jpg" x="86" y="78" width="112" height="132" preserveAspectRatio="xMidYMid slice" transform="rotate(-11 142 150)"/></g>
+          <g class="tote-item i2"><rect x="182" y="58" width="134" height="168" rx="4" fill="#fbfaf7" transform="rotate(9 249 142)"/><image href="assets/projects/rush-02-sm.jpg" x="190" y="66" width="118" height="140" preserveAspectRatio="xMidYMid slice" transform="rotate(9 249 142)"/></g>
+          <g class="tote-item i3"><rect x="150" y="98" width="98" height="132" rx="6" fill="#16120d" transform="rotate(-2 199 164)"/><text x="199" y="150" text-anchor="middle" fill="#c9a96b" font-family="Pinyon Script, cursive" font-size="24" transform="rotate(-2 199 164)">Rush4Rush</text><text x="199" y="176" text-anchor="middle" fill="#e9dcc2" font-family="Archivo Black, sans-serif" font-size="11" letter-spacing="3" transform="rotate(-2 199 164)">ALL ACCESS</text></g>
+
+          <!-- front panel -->
+          <path d="M58 168 L342 168 Q352 330 366 486 Q368 500 352 502 L48 502 Q32 500 34 486 Q48 330 58 168 Z" fill="url(#canvasFront)" filter="url(#canvasTex)"/>
+          <g clip-path="url(#frontClip)">
+            <rect x="30" y="160" width="340" height="350" fill="url(#canvasShade)"/>
+            <!-- soft folds -->
+            <path d="M150 170 C 140 280, 160 400, 140 502" stroke="#000" stroke-opacity=".05" stroke-width="18" fill="none" filter="url(#soft)"/>
+            <path d="M268 170 C 282 300, 258 420, 276 502" stroke="#fff" stroke-opacity=".5" stroke-width="16" fill="none" filter="url(#soft)"/>
+            <!-- hem -->
+            <rect x="40" y="168" width="320" height="24" fill="#000" opacity=".05"/>
+            <path d="M60 186 L340 186" stroke="#a69d8b" stroke-width="1.2" stroke-dasharray="5 4"/>
+            <!-- print -->
+            <g filter="url(#print)" fill="#1b1916" opacity=".88">
+              <text x="200" y="350" text-anchor="middle" font-family="Archivo Black, sans-serif" font-size="46" letter-spacing="2">RUSH</text>
+              <text x="200" y="392" text-anchor="middle" font-family="Pinyon Script, cursive" font-size="40" fill="#8c7046">for</text>
+              <text x="200" y="440" text-anchor="middle" font-family="Archivo Black, sans-serif" font-size="46" letter-spacing="2">RUSH</text>
+            </g>
+          </g>
+          <!-- front handle with stitched attachments -->
+          <path d="M120 200 C 112 18, 288 18, 280 200" fill="none" stroke="#b9b1a1" stroke-width="26" stroke-linecap="butt"/>
+          <path d="M120 200 C 112 18, 288 18, 280 200" fill="none" stroke="#efe9de" stroke-width="22"/>
+          <path d="M120 200 C 112 18, 288 18, 280 200" fill="none" stroke="#b3aa98" stroke-width="1" stroke-dasharray="4 4"/>
+          <g fill="none" stroke="#a69d8b" stroke-width="1.1">
+            <rect x="110" y="190" width="20" height="22"/><path d="M110 190 L130 212 M130 190 L110 212"/>
+            <rect x="270" y="190" width="20" height="22"/><path d="M270 190 L290 212 M290 190 L270 212"/>
+          </g>
+        </svg>
       </div>
     </div>
 
@@ -262,6 +466,8 @@
       </div>
     </div>
 
+    <div class="case-gallery reveal" data-gallery="rush"></div>
+
     <div class="stats reveal">
       <div><b data-count="2">2</b><span>Editions<br>delivered</span></div>
       <div><b data-count="2">2</b><span>Roles —<br>Hospitality &amp; Marketing</span></div>
@@ -269,8 +475,41 @@
     </div>
   </section>
 
-  <!-- ============ PROJECT 4 — AKRITI ============ -->
-  <section id="p-akriti" class="slide case alt">
+  <!-- ============ PROJECT — SMART / LIGHT OF LIFE ============ -->
+  <section id="p-smart" class="slide case alt">
+    <div class="case-left reveal">
+      <h2 data-split class="case-title">SMART<br>PROJECT</h2>
+      <p class="script">Light Of Life Trust</p>
+      <div class="card">
+        <h4>DETAILS:</h4>
+        <p><b>Partner:</b> Light Of Life Trust (NGO)</p>
+        <p><b>Location:</b> Raigad, Maharashtra</p>
+        <p><b>Timeline:</b> February 2026</p>
+        <h4 class="mt">GOAL:</h4>
+        <p>Bring financial literacy and entrepreneurship basics to village communities — earning trust on the ground before delivering the message.</p>
+      </div>
+    </div>
+    <div class="case-right reveal">
+      <div class="card">
+        <h4>WHAT I DID:</h4>
+        <ul>
+          <li>Led village fieldwork and engagement with the Gram Panchayat.</li>
+          <li>Designed sessions on financial literacy and entrepreneurship basics.</li>
+          <li>Delivered the sessions to community groups alongside the project team.</li>
+        </ul>
+      </div>
+      <div class="flow">
+        <div class="flow-step"><b>01</b>Gram Panchayat engagement</div>
+        <div class="flow-step"><b>02</b>Village fieldwork</div>
+        <div class="flow-step"><b>03</b>Session design</div>
+        <div class="flow-step"><b>04</b>Community delivery</div>
+      </div>
+    </div>
+    <div class="case-gallery reveal" data-gallery="smart"></div>
+  </section>
+
+  <!-- ============ PROJECT — AKRITI ============ -->
+  <section id="p-akriti" class="slide case">
     <div class="case-left reveal">
       <h2 data-split class="case-title">AKRITI<br>FABRICATION</h2>
       <p class="script">the craft behind the product</p>
@@ -297,24 +536,26 @@
   <div class="marquee dark" aria-hidden="true"><div class="marquee-track"><span>Desire</span><i>✦</i><span>Craft</span><i>✦</i><span>Exclusivity</span><i>✦</i><span>Heritage</span><i>✦</i><span>Experience</span><i>✦</i><span>Story</span><i>✦</i><span>Desire</span><i>✦</i><span>Craft</span><i>✦</i><span>Exclusivity</span><i>✦</i><span>Heritage</span><i>✦</i><span>Experience</span><i>✦</i><span>Story</span><i>✦</i><span>Desire</span><i>✦</i><span>Craft</span><i>✦</i><span>Exclusivity</span><i>✦</i><span>Heritage</span><i>✦</i><span>Experience</span><i>✦</i><span>Story</span><i>✦</i></div></div>
 
   <!-- ============ LEADERSHIP ============ -->
-  <section class="slide lead-sec">
+  <section id="beyond" class="slide lead-sec">
     <h2 data-split class="big-title reveal">BEYOND<br>THE BRIEF</h2>
     <div class="lead-grid">
       <div class="card reveal"><h4>MIS TEAM LEAD</h4><p>Marketing Executive · ELC, ExcoLearn Pvt. Ltd.</p></div>
       <div class="card reveal"><h4>VICE PRESIDENT EDUCATION</h4><p>Toastmasters</p></div>
-      <div class="card reveal"><h4>SMART PROJECT</h4><p>Light Of Life Trust (Feb 2026): led village fieldwork and Gram Panchayat engagement; delivered sessions on financial literacy and entrepreneurship.</p></div>
       <div class="card reveal"><h4>BUSINESS DEVELOPMENT</h4><p>Jankalyan Multi-Purpose Society (June 2023): donor outreach, prospect identification and relationship building for fundraising.</p></div>
       <div class="card reveal"><h4>COMMUNITY</h4><p>Rotaract Club of Greater Ujjain · Volunteer, Girl Up community.</p></div>
     </div>
+    <h4 class="gallery-label reveal">CAMPUS &amp; LEADERSHIP MOMENTS</h4>
+    <div class="case-gallery reveal" data-gallery="campus"></div>
   </section>
 
   <!-- ============ GET IN TOUCH ============ -->
   <section id="contact" class="slide contact">
     <div class="socials reveal">
       <a href="https://www.linkedin.com/in/mandvi-singh-baghel-141588255" target="_blank" rel="noopener" aria-label="LinkedIn" data-magnetic>in</a>
+      <a href="https://www.instagram.com/mandvi_04/" target="_blank" rel="noopener" aria-label="Instagram" data-magnetic><svg><use href="#ig"/></svg></a>
       <a href="mailto:mandvibaghel04@gmail.com" aria-label="Email" data-magnetic>✉</a>
     </div>
-    <div class="touch-pill reveal shimmer"><h2 data-split>GET IN TOUCH!</h2></div>
+    <div class="touch-pill reveal"><h2 data-split>GET IN TOUCH!</h2></div>
 
     <div class="contact-body">
       <div class="polaroid reveal" data-tilt>
@@ -325,10 +566,8 @@
         <a href="mailto:mandvibaghel04@gmail.com"><span class="ico">✉</span>mandvibaghel04@gmail.com</a>
         <a href="tel:+919685214751"><span class="ico">☏</span>+91 96852 14751</a>
         <a href="https://www.linkedin.com/in/mandvi-singh-baghel-141588255" target="_blank" rel="noopener"><span class="ico">in</span>Mandvi Singh Baghel</a>
-        <div class="cv-row">
-          <a class="cv-pill" data-magnetic href="assets/Mandvi_Singh_Baghel_Resume.pdf" target="_blank" rel="noopener">View 2026 CV</a>
-          <a class="cv-pill solid" data-magnetic href="assets/Mandvi_Singh_Baghel_Resume.pdf" download>Download Resume ↓</a>
-        </div>
+        <a href="https://www.instagram.com/mandvi_04/" target="_blank" rel="noopener"><span class="ico"><svg><use href="#ig"/></svg></span>@mandvi_04</a>
+        <a class="cv-pill solid" data-magnetic href="assets/Mandvi_Singh_Baghel_Resume.pdf" download>Download Resume ↓</a>
       </div>
     </div>
 
