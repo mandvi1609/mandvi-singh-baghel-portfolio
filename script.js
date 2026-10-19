@@ -2,7 +2,7 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 const P = 'assets/projects/';
 // portrait shots span two rows, panoramas two columns
-const SHAPES = {"apple-01": "tall", "apple-02": "tall", "apple-03": "tall", "apple-04": "tall", "apple-05": "tall", "apple-06": "wide", "apple-07": "wide", "apple-08": "tall", "apple-09": "tall", "apple-10": "tall", "campus-05": "tall", "campus-06": "tall", "gsb-01": "tall", "gsb-02": "tall", "gsb-05": "tall", "smart-02": "tall"};
+const SHAPES = {"apple-01": "tall", "apple-02": "tall", "apple-03": "tall", "apple-04": "tall", "apple-05": "tall", "apple-06": "wide", "apple-07": "wide", "apple-08": "tall", "apple-09": "tall", "apple-10": "tall", "campus-05": "tall", "campus-06": "tall", "gsb-01": "tall", "gsb-02": "tall", "gsb-05": "tall", "smart-02": "tall", "safar-02": "tall", "safar-04": "tall", "akriti-02": "tall", "gsb-06": "tall", "gsb-08": "tall", "gsb-10": "tall"};
 
 // ---------- Project photos ----------
 const GALLERIES = {
@@ -25,16 +25,34 @@ const GALLERIES = {
     title: 'GSB — Global Shirt Box', kicker: 'Industry Visit', section: '#p-gsb',
     photos: [
       ['gsb-01', 'Mandvi at GSB'],
+      ['gsb-07', 'Global Shirt Box India, Andheri East, Mumbai'],
+      ['gsb-06', 'Mandvi among the GSB shirt racks'],
+      ['gsb-08', 'GSB label on a denim shirt'],
       ['gsb-02', 'GSB shirt print designs'],
       ['gsb-03', 'Fabric stock'],
       ['gsb-04', 'Shirts on the rack'],
-      ['gsb-05', 'Working session with the GSB team'],
+      ['gsb-09', 'Industry visit session at the GSB office'],
+      ['gsb-10', 'Students at the GSB office'],
+      ['gsb-05', 'Interaction with the GSB team'],
     ],
   },
   safar: {
-    // add SafarCabby photos here as ['safar-01', 'caption'] once they're in assets/projects/
     title: 'SafarCabby', kicker: 'Lucenta Solutions Technologies · CMAPS', section: '#p-safar',
-    photos: [],
+    photos: [
+      ['safar-01', 'Working session in Jaipur'],
+      ['safar-02', 'Research and analysis on the laptop'],
+      ['safar-03', 'Project team with the client'],
+      ['safar-04', 'Startup Oasis, an initiative by RIICO'],
+      ['safar-05', 'SafarCabby brand creative'],
+      ['safar-06', 'Mr. Cabby campaign creative'],
+    ],
+  },
+  akriti: {
+    title: 'Akriti Fabrication', kicker: 'CMAPS · Operations Study', section: '#p-akriti',
+    photos: [
+      ['akriti-01', 'Project team at Akriti Fabrication'],
+      ['akriti-02', 'Meeting at the Akriti Fabrication office'],
+    ],
   },
   rush: {
     title: 'Rush4Rush', kicker: 'Event Experience · Universal AI University', section: '#p-rush',
