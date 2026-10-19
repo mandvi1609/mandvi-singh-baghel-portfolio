@@ -2,7 +2,7 @@
 
 A one-page, editorial-style portfolio for luxury & premium brand marketing.
 
-**Sections:** About Me · Skills & Certificates · Projects (Apple Premium Retail, GSB — Global Shirt Box, SafarCabby Brand Playbook, Rush 4 Rush Event Experience, SMART Project, Akriti Fabrication) · Leadership & Community · Get in Touch
+**Sections:** About Me · Skills & Certificates · Projects (Apple Premium Retail, GSB — Global Shirt Box, SafarCabby Brand Playbook, Rush4Rush Event Experience, SMART Project, Akriti Fabrication) · Leadership & Community · Get in Touch
 
 ## View it
 Open `index.html` in a browser, or enable **GitHub Pages** (Settings → Pages → Deploy from branch → `main` / root).
