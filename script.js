@@ -594,6 +594,87 @@ function goTop() {
   setTimeout(() => shutter.classList.remove('run'), 2350);
 }
 
+// ---------- SafarCabby: the laptop opens on scroll and plays the playbook ----------
+(() => {
+  const stage = document.querySelector('.laptop-stage');
+  if (!stage) return;
+  const slides = [...stage.querySelectorAll('.dslide')];
+  const cab = stage.querySelector('.cab');
+  const dotsWrap = stage.querySelector('.deck-dots');
+  const HOLD = 3600;
+  let idx = 0;
+  let timer = null;
+  let busy = false;
+  let open = 0;
+
+  const dots = slides.map((_, i) => {
+    const d = document.createElement('button');
+    d.type = 'button';
+    d.setAttribute('role', 'tab');
+    d.setAttribute('aria-label', `Slide ${i + 1}`);
+    d.addEventListener('click', () => { go(i); restart(); });
+    dotsWrap.append(d);
+    return d;
+  });
+  dotsWrap.style.setProperty('--dur', `${HOLD}ms`);
+
+  function markDot() {
+    dots.forEach((d, i) => {
+      d.classList.toggle('on', i === idx);
+      d.setAttribute('aria-selected', i === idx);
+    });
+    // restart the fill animation on the active dot
+    const on = dots[idx];
+    on.classList.remove('on'); void on.offsetWidth; on.classList.add('on');
+  }
+
+  function go(next) {
+    next = (next + slides.length) % slides.length;
+    if (busy || next === idx) return;
+    const prev = slides[idx];
+    const incoming = slides[next];
+    idx = next;
+    markDot();
+    if (reduceMotion) { prev.classList.remove('on'); incoming.classList.add('on'); return; }
+    busy = true;
+    incoming.classList.add('entering');
+    cab.classList.remove('drive'); void cab.offsetWidth; cab.classList.add('drive');
+    setTimeout(() => {
+      prev.classList.remove('on');
+      incoming.classList.remove('entering');
+      incoming.classList.add('on');
+      busy = false;
+    }, 1180);
+  }
+
+  function restart() {
+    clearInterval(timer);
+    timer = setInterval(() => go(idx + 1), HOLD);
+  }
+  function stop() { clearInterval(timer); timer = null; }
+
+  markDot();
+  // play only while the laptop is open and on screen
+  new IntersectionObserver(([e]) => {
+    if (e.isIntersecting && open > 0.9) { if (!timer) restart(); } else stop();
+  }, { threshold: 0.35 }).observe(stage);
+
+  function onScroll() {
+    const r = stage.getBoundingClientRect();
+    // closed when the laptop's top meets the bottom of the screen, fully open by the time it reaches 30% from the top
+    const t = (innerHeight - r.top) / (innerHeight * 0.72);
+    open = reduceMotion ? 1 : Math.max(0, Math.min(1, t));
+    // ease the hinge so it settles like a real lid
+    const eased = 1 - Math.pow(1 - open, 3);
+    stage.style.setProperty('--open', eased.toFixed(4));
+    if (open > 0.9 && !timer && r.bottom > 0 && r.top < innerHeight) restart();
+    if (open < 0.6) stop();
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+})();
+
 // ---------- Keyboard ----------
 document.addEventListener('keydown', (e) => {
   if (lb.classList.contains('open')) {
