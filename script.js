@@ -22,7 +22,7 @@ const GALLERIES = {
     ],
   },
   gsb: {
-    title: 'GSB — Global Shirt Box', kicker: 'CMAPS Live Project', section: '#p-gsb',
+    title: 'GSB — Global Shirt Box', kicker: 'Industry Visit', section: '#p-gsb',
     photos: [
       ['gsb-01', 'Mandvi at GSB'],
       ['gsb-02', 'GSB shirt print designs'],
@@ -30,6 +30,11 @@ const GALLERIES = {
       ['gsb-04', 'Shirts on the rack'],
       ['gsb-05', 'Working session with the GSB team'],
     ],
+  },
+  safar: {
+    // add SafarCabby photos here as ['safar-01', 'caption'] once they're in assets/projects/
+    title: 'SafarCabby', kicker: 'Lucenta Solutions Technologies · CMAPS', section: '#p-safar',
+    photos: [],
   },
   rush: {
     title: 'Rush4Rush', kicker: 'Event Experience · Universal AI University', section: '#p-rush',
@@ -48,7 +53,7 @@ const GALLERIES = {
     ],
   },
   campus: {
-    title: 'Campus & Leadership', kicker: 'Universal AI University', section: '#beyond',
+    title: 'Campus & Leadership', kicker: 'Universal AI University', section: '#leadership',
     photos: [
       ['campus-01', 'MBA cohort on campus'],
       ['campus-02', 'Formal event on stage'],
@@ -96,6 +101,7 @@ document.querySelectorAll('[data-split]').forEach(splitText);
 // ---------- Photo strips inside each case ----------
 document.querySelectorAll('.case-gallery[data-gallery]').forEach((strip) => {
   const g = GALLERIES[strip.dataset.gallery];
+  if (!g || !g.photos.length) return;
   const shown = g.photos.slice(0, 4);
   shown.forEach(([id, alt], idx) => {
     const b = document.createElement('button');
@@ -116,6 +122,22 @@ document.querySelectorAll('.case-gallery[data-gallery]').forEach((strip) => {
     const item = e.target.closest('.cg-item, .cg-more');
     if (!item) return;
     openGallery(strip.dataset.gallery, item, item.classList.contains('cg-item') ? +item.dataset.index : null);
+  });
+});
+
+// ---------- Real photos spill out of each project folder ----------
+document.querySelectorAll('.folder[data-gallery]').forEach((folder) => {
+  const g = GALLERIES[folder.dataset.gallery];
+  if (!g || !g.photos.length) return;
+  folder.classList.add('has-photos');
+  const sheets = folder.querySelectorAll('.sheet');
+  g.photos.slice(0, sheets.length).forEach(([id], k) => {
+    const img = document.createElement('img');
+    img.className = 'sheet photo';
+    img.src = `${P}${id}-sm.jpg`;
+    img.alt = '';
+    img.loading = 'lazy';
+    sheets[k].replaceWith(img);
   });
 });
 
@@ -209,7 +231,7 @@ document.addEventListener('click', (e) => {
   const hash = link.getAttribute('href');
   if (hash.length < 2) return;
 
-  if (link.classList.contains('folder') && link.dataset.gallery) {
+  if (link.classList.contains('folder') && GALLERIES[link.dataset.gallery]?.photos.length) {
     e.preventDefault();
     const ico = link.querySelector('.folder-ico');
     link.classList.add('opening');
@@ -389,8 +411,15 @@ lb.addEventListener('touchend', (e) => {
 const nav = document.querySelector('.nav');
 const pill = document.querySelector('.msb-pill');
 const pillPct = pill.querySelector('.pill-pct');
+const pillSec = pill.querySelector('.pill-sec');
 const menu = document.querySelector('.menu');
 nav.querySelectorAll('.nav-links a').forEach((a, k, all) => a.style.setProperty('--k', all.length - 1 - k));
+
+const SECTIONS = [
+  ['about', 'About'], ['skills', 'Skills'], ['projects', 'Projects'], ['p-apple', 'Apple'],
+  ['p-gsb', 'GSB'], ['p-safar', 'SafarCabby'], ['p-rush', 'Rush4Rush'], ['p-smart', 'SMART'],
+  ['p-akriti', 'Akriti'], ['leadership', 'Leadership'], ['contact', 'Contact'],
+].map(([id, label]) => [document.getElementById(id), label]).filter(([el]) => el);
 
 function openMenu() {
   menu.classList.add('open');
@@ -408,35 +437,124 @@ function closeMenu() {
   updatePill();
 }
 
+// the section name rolls like an odometer
+let currentSec = 'About';
+function rollSection(label) {
+  if (label === currentSec) return;
+  const dir = SECTIONS.findIndex(([, l]) => l === label) > SECTIONS.findIndex(([, l]) => l === currentSec) ? 1 : -1;
+  currentSec = label;
+  const old = pillSec.firstElementChild;
+  const next = document.createElement('span');
+  next.textContent = label;
+  pillSec.append(next);
+  if (reduceMotion) { old?.remove(); return; }
+  next.animate([{ transform: `translateY(${dir * 110}%)`, opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 520, easing: 'cubic-bezier(.16,1,.3,1)' });
+  old?.animate([{ transform: 'none', opacity: 1 }, { transform: `translateY(${-dir * 110}%)`, opacity: 0 }], { duration: 420, easing: 'cubic-bezier(.7,0,.84,0)' }).finished.then(() => old.remove());
+}
+
+// nav links physically fly into the pill (and back out again)
+function flyLinks(intoPill) {
+  if (reduceMotion) return;
+  const pr = pill.getBoundingClientRect();
+  const px = pr.left + pr.width / 2;
+  const py = 14 + 23;
+  [...nav.querySelectorAll('.nav-links a, .nav-mark')].forEach((a, i) => {
+    const r = a.getBoundingClientRect();
+    if (!r.width) return;
+    const ghost = a.cloneNode(true);
+    ghost.className = 'fly-ghost';
+    Object.assign(ghost.style, { left: `${r.left}px`, top: `${intoPill ? r.top : 18}px` });
+    document.body.append(ghost);
+    const dx = px - (r.left + r.width / 2);
+    const dy = py - (r.top + r.height / 2);
+    const spin = (i % 2 ? 1 : -1) * (120 + i * 40);
+    const frames = [
+      { transform: 'translate(0,0) scale(1) rotate(0)', opacity: 1, filter: 'blur(0)' },
+      { transform: `translate(${dx * 0.55}px, ${dy + 60}px) scale(.8) rotate(${spin / 2}deg)`, opacity: 1, offset: 0.5 },
+      { transform: `translate(${dx}px, ${dy}px) scale(.1) rotate(${spin}deg)`, opacity: 0, filter: 'blur(2px)' },
+    ];
+    ghost.animate(intoPill ? frames : frames.slice().reverse(), {
+      duration: 760, delay: i * 55, easing: 'cubic-bezier(.65,0,.35,1)', fill: 'both',
+    }).finished.then(() => ghost.remove());
+  });
+  if (intoPill) {
+    pill.animate([
+      { scale: '1 1' }, { scale: '1 1', offset: 0.55 }, { scale: '1.35 .7', offset: 0.75 }, { scale: '.9 1.12', offset: 0.88 }, { scale: '1 1' },
+    ], { duration: 1150, easing: 'ease-out' });
+  }
+}
+
+// gold sparks burst when the pill is full
+function burst() {
+  if (reduceMotion) return;
+  const r = pill.getBoundingClientRect();
+  for (let i = 0; i < 34; i++) {
+    const s = document.createElement('i');
+    s.className = 'spark';
+    s.style.left = `${r.left + Math.random() * r.width}px`;
+    s.style.top = `${r.top + r.height / 2}px`;
+    document.body.append(s);
+    const ang = Math.random() * Math.PI * 2;
+    const dist = 50 + Math.random() * 130;
+    s.animate([
+      { transform: 'translate(0,0) scale(1)', opacity: 1 },
+      { transform: `translate(${Math.cos(ang) * dist}px, ${Math.sin(ang) * dist * 0.7 + 40}px) scale(0)`, opacity: 0 },
+    ], { duration: 900 + Math.random() * 700, easing: 'cubic-bezier(.16,1,.3,1)' }).finished.then(() => s.remove());
+  }
+  pill.animate([{ scale: '1 1' }, { scale: '1.25 1.25' }, { scale: '1 1' }], { duration: 600, easing: 'cubic-bezier(.34,1.56,.64,1)' });
+}
+
+let wasCollapsed = false;
+let wasFull = false;
 function updatePill() {
   const y = window.scrollY;
   const max = document.documentElement.scrollHeight - innerHeight;
   const p = max > 0 ? Math.min(1, y / max) : 0;
   const collapsed = y > innerHeight * 0.5;
+  if (collapsed !== wasCollapsed && !document.body.classList.contains('is-loading')) flyLinks(collapsed);
+  wasCollapsed = collapsed;
   nav.classList.toggle('collapsed', collapsed);
   pill.classList.toggle('show', collapsed || menu.classList.contains('open'));
   pill.style.setProperty('--p', p.toFixed(4));
   pillPct.textContent = `${Math.round(p * 100)}%`;
   const full = p > 0.985;
+  if (full && !wasFull && collapsed) setTimeout(burst, 250);
+  wasFull = full;
   pill.classList.toggle('full', full);
   if (!menu.classList.contains('open')) pill.setAttribute('aria-label', full ? 'Back to top' : 'Open menu');
+
+  let label = SECTIONS[0][1];
+  SECTIONS.forEach(([el, l]) => { if (el.getBoundingClientRect().top < innerHeight * 0.45) label = l; });
+  rollSection(label);
 }
 window.addEventListener('scroll', updatePill, { passive: true });
 window.addEventListener('resize', updatePill);
 updatePill();
 
-pill.addEventListener('click', () => {
+function pillAction(e) {
+  if (e.target.closest('.pill-links a')) return; // handled by the in-page link wipe
   if (menu.classList.contains('open')) { closeMenu(); return; }
   if (pill.classList.contains('full')) { goTop(); return; }
   openMenu();
+}
+pill.addEventListener('click', pillAction);
+pill.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pillAction(e); }
 });
 
-// ---------- Back to top: the shutter ----------
+// ---------- Back to top: the pill launches, the shutter falls ----------
 const shutter = document.querySelector('.shutter');
 function goTop() {
   if (reduceMotion) { window.scrollTo(0, 0); return; }
   if (shutter.classList.contains('run')) return;
-  shutter.classList.add('run');
+  pill.animate([
+    { translate: '0 0', scale: '1 1' },
+    { translate: '0 14px', scale: '1.15 .75', offset: 0.18 },
+    { translate: '0 -160px', scale: '.7 1.5', offset: 0.45 },
+    { translate: '0 -160px', scale: '.7 1.5', offset: 0.8 },
+    { translate: '0 0', scale: '1 1' },
+  ], { duration: 2000, easing: 'cubic-bezier(.65,0,.35,1)' });
+  setTimeout(() => shutter.classList.add('run'), 250);
   setTimeout(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
     history.replaceState(null, '', location.pathname);
@@ -449,8 +567,8 @@ function goTop() {
       document.body.classList.add('loaded');
       h1.classList.add('split-in');
     }, 250);
-  }, 820);
-  setTimeout(() => shutter.classList.remove('run'), 2100);
+  }, 1070);
+  setTimeout(() => shutter.classList.remove('run'), 2350);
 }
 
 // ---------- Keyboard ----------
@@ -489,6 +607,9 @@ if (!reduceMotion) {
       const skew = Math.max(-12, Math.min(12, velocity * 0.4));
       track.style.transform = `translateX(${-x}px) skewX(${skew}deg)`;
     });
+
+    const s = Math.min(0.35, Math.abs(velocity) * 0.012);
+    if (!pill.getAnimations().length) pill.style.scale = `${1 + s} ${1 - s * 0.45}`;
 
     peeks.forEach((p) => {
       const r = p.parentElement.getBoundingClientRect();
@@ -546,6 +667,12 @@ if (!reduceMotion) {
         el.style.transform = '';
       });
     });
+
+    pill.addEventListener('mousemove', (e) => {
+      const r = pill.getBoundingClientRect();
+      pill.style.translate = `${(e.clientX - (r.left + r.width / 2)) * 0.18}px ${(e.clientY - (r.top + r.height / 2)) * 0.35}px`;
+    });
+    pill.addEventListener('mouseleave', () => { pill.style.translate = ''; });
 
     // ---------- Magnetic buttons ----------
     document.querySelectorAll('[data-magnetic]').forEach((el) => {

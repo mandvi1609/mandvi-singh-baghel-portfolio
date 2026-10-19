@@ -57,12 +57,16 @@
   </nav>
 
   <!-- Collapsed navigation: fills as you scroll, takes you home when full -->
-  <button class="msb-pill" type="button" aria-label="Open menu">
+  <div class="msb-pill" role="button" tabindex="0" aria-label="Open menu">
     <span class="pill-fill"></span>
     <span class="pill-mark">M.S.B</span>
+    <span class="pill-sec"><span>About</span></span>
+    <span class="pill-links">
+      <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Work</a><a href="#contact">Contact</a>
+    </span>
     <span class="pill-pct">0%</span>
     <span class="pill-top">Back to top ↑</span>
-  </button>
+  </div>
 
   <div class="menu" aria-hidden="true">
     <div class="menu-links">
@@ -190,7 +194,7 @@
       <a href="#p-gsb" class="folder reveal" data-gallery="gsb" data-cursor="Open"><div class="folder-ico"><span class="sheet"></span><span class="sheet"></span><span class="sheet"></span></div><span>GSB — GLOBAL SHIRT BOX</span></a>
       <a href="#p-rush" class="folder reveal" data-gallery="rush" data-cursor="Open"><div class="folder-ico"><span class="sheet"></span><span class="sheet"></span><span class="sheet"></span></div><span>RUSH4RUSH</span></a>
       <a href="#p-smart" class="folder reveal" data-gallery="smart" data-cursor="Open"><div class="folder-ico"><span class="sheet"></span><span class="sheet"></span><span class="sheet"></span></div><span>SMART PROJECT</span></a>
-      <a href="#p-safar" class="folder reveal" data-cursor="View"><div class="folder-ico"><span class="sheet"></span><span class="sheet"></span><span class="sheet"></span></div><span>SAFARCABBY</span></a>
+      <a href="#p-safar" class="folder reveal" data-gallery="safar" data-cursor="Open"><div class="folder-ico"><span class="sheet"></span><span class="sheet"></span><span class="sheet"></span></div><span>SAFARCABBY</span></a>
       <a href="#p-akriti" class="folder reveal" data-cursor="View"><div class="folder-ico"><span class="sheet"></span><span class="sheet"></span><span class="sheet"></span></div><span>AKRITI FABRICATION</span></a>
     </div>
   </section>
@@ -297,9 +301,9 @@
         <h4>DETAILS:</h4>
         <p><b>Brand:</b> GSB — Global Shirt Box</p>
         <p><b>Industry:</b> Apparel · Shirting</p>
-        <p><b>Project:</b> CMAPS Live Project</p>
+        <p><b>Visit:</b> Industry Visit (IV)</p>
         <h4 class="mt">GOAL:</h4>
-        <p>Understand a shirt brand from the inside — from print and fabric to the rack — and see how product craft becomes a brand story customers pay a premium for.</p>
+        <p>See a shirt brand from the inside on an industry visit — from print and fabric to the rack — and understand how product craft becomes a brand story customers pay a premium for.</p>
       </div>
     </div>
     <div class="case-right reveal">
@@ -309,12 +313,12 @@
         <img src="assets/projects/gsb-04-sm.jpg" alt="Shirts on the rack at GSB" loading="lazy">
       </div>
       <div class="card">
-        <h4>WHAT I EXPLORED:</h4>
+        <h4>ON THE VISIT:</h4>
         <ul>
           <li>Print &amp; design range — how patterns are developed for each collection.</li>
           <li>Fabric stock and sourcing — the material quality behind the product.</li>
           <li>Merchandising on the rack — how the range is presented to buyers.</li>
-          <li>Working sessions with the GSB team on the business and its customers.</li>
+          <li>Interaction with the GSB team on the business, its range and its customers.</li>
         </ul>
       </div>
     </div>
@@ -360,6 +364,7 @@
         </ul>
       </div>
     </div>
+    <div class="case-gallery reveal" data-gallery="safar"></div>
   </section>
 
   <!-- ============ PROJECT — RUSH4RUSH ============ -->
@@ -382,74 +387,123 @@
 
       <!-- Canvas tote, like the reel -->
       <div class="tote" data-tilt>
-        <svg viewBox="0 0 400 540" role="img" aria-label="Canvas tote bag holding Rush4Rush photos">
+        <svg viewBox="0 0 420 560" role="img" aria-label="Canvas tote bag holding Rush4Rush photos">
           <defs>
-            <filter id="canvasTex" x="0" y="0" width="100%" height="100%">
-              <feTurbulence type="fractalNoise" baseFrequency=".9 .55" numOctaves="3" seed="7" result="n"/>
-              <feColorMatrix in="n" type="saturate" values="0" result="g"/>
-              <feComponentTransfer in="g" result="g2"><feFuncA type="linear" slope=".22"/></feComponentTransfer>
-              <feComposite in="g2" in2="SourceGraphic" operator="in" result="tex"/>
-              <feBlend in="SourceGraphic" in2="tex" mode="multiply"/>
+            <!-- woven canvas: noise turned into a lit, bumpy weave -->
+            <filter id="weave" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+              <feTurbulence type="fractalNoise" baseFrequency="1.6 .9" numOctaves="1" seed="11" result="n"/>
+              <feDiffuseLighting in="n" surfaceScale=".9" diffuseConstant="1" lighting-color="#fff" result="lit">
+                <feDistantLight azimuth="235" elevation="62"/>
+              </feDiffuseLighting>
+              <feComposite in="lit" in2="SourceGraphic" operator="arithmetic" k1=".28" k2="0" k3=".78" k4="0" result="mult"/>
+              <feComposite in="mult" in2="SourceAlpha" operator="in"/>
             </filter>
-            <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="14"/></filter>
-            <filter id="print"><feTurbulence type="fractalNoise" baseFrequency="1.6" numOctaves="1" seed="3"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>
-            <linearGradient id="canvasFront" x1="0" x2="1" y1="0" y2="0">
-              <stop offset="0" stop-color="#d9d3c6"/>
-              <stop offset=".12" stop-color="#ece7dc"/>
-              <stop offset=".35" stop-color="#f5f1e8"/>
-              <stop offset=".52" stop-color="#e9e3d6"/>
-              <stop offset=".62" stop-color="#f3efe5"/>
-              <stop offset=".86" stop-color="#e8e2d5"/>
-              <stop offset="1" stop-color="#cfc8b9"/>
+            <!-- big soft wrinkles lit from the top left -->
+            <filter id="wrinkle" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+              <feTurbulence type="fractalNoise" baseFrequency=".022 .005" numOctaves="2" seed="4" result="w"/>
+              <feDiffuseLighting in="w" surfaceScale="6" diffuseConstant="1" lighting-color="#fff" result="wl">
+                <feDistantLight azimuth="200" elevation="55"/>
+              </feDiffuseLighting>
+              <feComposite in="wl" in2="SourceGraphic" operator="arithmetic" k1=".5" k2="0" k3=".55" k4="0" result="m"/>
+              <feComposite in="m" in2="SourceAlpha" operator="in"/>
+            </filter>
+            <filter id="blur10" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="10"/></filter>
+            <filter id="blur4" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4"/></filter>
+            <filter id="drop" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="2" dy="6" stdDeviation="5" flood-color="#2a2218" flood-opacity=".35"/></filter>
+            <!-- ink soaked into the weave -->
+            <filter id="ink" x="-5%" y="-5%" width="110%" height="110%">
+              <feTurbulence type="fractalNoise" baseFrequency="2.2" numOctaves="1" seed="9" result="t"/>
+              <feDisplacementMap in="SourceGraphic" in2="t" scale="1.4" result="d"/>
+              <feColorMatrix in="t" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -.5 1.12" result="holes"/>
+              <feComposite in="d" in2="holes" operator="in"/>
+            </filter>
+            <linearGradient id="frontLight" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0" stop-color="#ddd4c2"/>
+              <stop offset=".1" stop-color="#f1ebdf"/>
+              <stop offset=".42" stop-color="#fbf8f1"/>
+              <stop offset=".75" stop-color="#f3eee3"/>
+              <stop offset="1" stop-color="#e0d7c5"/>
             </linearGradient>
-            <linearGradient id="canvasShade" x1="0" x2="0" y1="0" y2="1">
-              <stop offset="0" stop-color="#000" stop-opacity=".16"/>
-              <stop offset=".12" stop-color="#000" stop-opacity="0"/>
-              <stop offset=".8" stop-color="#000" stop-opacity="0"/>
-              <stop offset="1" stop-color="#000" stop-opacity=".14"/>
+            <linearGradient id="gusset" x1="0" x2="1">
+              <stop offset="0" stop-color="#b9b09d"/><stop offset="1" stop-color="#cfc6b3"/>
             </linearGradient>
-            <linearGradient id="inside" x1="0" x2="0" y1="0" y2="1">
-              <stop offset="0" stop-color="#b9b1a1"/><stop offset="1" stop-color="#8f8778"/>
+            <linearGradient id="inner" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0" stop-color="#cfc6b3"/><stop offset="1" stop-color="#8f8673"/>
             </linearGradient>
-            <clipPath id="frontClip"><path d="M58 168 L342 168 Q352 330 366 486 Q368 500 352 502 L48 502 Q32 500 34 486 Q48 330 58 168 Z"/></clipPath>
+            <linearGradient id="vshade" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0" stop-color="#3a3024" stop-opacity=".28"/>
+              <stop offset=".1" stop-color="#3a3024" stop-opacity="0"/>
+              <stop offset=".86" stop-color="#3a3024" stop-opacity="0"/>
+              <stop offset="1" stop-color="#3a3024" stop-opacity=".22"/>
+            </linearGradient>
+            <clipPath id="frontClip"><path id="frontShape" d="M62 196 Q210 206 352 192 Q356 330 364 470 Q372 512 340 516 Q205 524 78 516 Q44 514 50 474 Q56 330 62 196 Z"/></clipPath>
           </defs>
 
-          <ellipse cx="200" cy="512" rx="170" ry="18" fill="#000" opacity=".28" filter="url(#soft)"/>
+          <!-- floor shadows -->
+          <ellipse cx="210" cy="530" rx="190" ry="20" fill="#2a2218" opacity=".22" filter="url(#blur10)"/>
+          <ellipse cx="208" cy="520" rx="150" ry="6" fill="#1b150e" opacity=".45" filter="url(#blur4)"/>
 
-          <!-- back handle -->
-          <path d="M128 176 C 122 40, 278 40, 272 176" fill="none" stroke="#c9c2b3" stroke-width="22" stroke-linecap="round"/>
-          <!-- back panel / inside -->
-          <path d="M62 170 Q200 150 338 170 L342 190 L58 190 Z" fill="url(#inside)"/>
+          <!-- back handle, falling slightly behind -->
+          <g filter="url(#weave)">
+            <path d="M132 196 C 126 60, 300 54, 290 194" fill="none" stroke="#a89f8b" stroke-width="26"/>
+            <path d="M132 196 C 126 60, 300 54, 290 194" fill="none" stroke="#d8d0bf" stroke-width="22"/>
+            <path d="M132 196 C 126 60, 300 54, 290 194" fill="none" stroke="#a79c86" stroke-width="17" stroke-dasharray="4 3"/>
+            <path d="M132 196 C 126 60, 300 54, 290 194" fill="none" stroke="#d8d0bf" stroke-width="14"/>
+          </g>
+
+          <!-- back panel & inside of the bag -->
+          <path d="M60 196 Q210 172 354 190 L352 214 Q210 222 62 214 Z" fill="url(#inner)" filter="url(#weave)"/>
+          <path d="M60 196 Q210 172 354 190" fill="none" stroke="#efe8da" stroke-width="5"/>
 
           <!-- contents -->
-          <g class="tote-item i1"><rect x="78" y="70" width="128" height="160" rx="4" fill="#fbfaf7" transform="rotate(-11 142 150)"/><image href="assets/projects/rush-01-sm.jpg" x="86" y="78" width="112" height="132" preserveAspectRatio="xMidYMid slice" transform="rotate(-11 142 150)"/></g>
-          <g class="tote-item i2"><rect x="182" y="58" width="134" height="168" rx="4" fill="#fbfaf7" transform="rotate(9 249 142)"/><image href="assets/projects/rush-02-sm.jpg" x="190" y="66" width="118" height="140" preserveAspectRatio="xMidYMid slice" transform="rotate(9 249 142)"/></g>
-          <g class="tote-item i3"><rect x="150" y="98" width="98" height="132" rx="6" fill="#16120d" transform="rotate(-2 199 164)"/><text x="199" y="150" text-anchor="middle" fill="#c9a96b" font-family="Pinyon Script, cursive" font-size="24" transform="rotate(-2 199 164)">Rush4Rush</text><text x="199" y="176" text-anchor="middle" fill="#e9dcc2" font-family="Archivo Black, sans-serif" font-size="11" letter-spacing="3" transform="rotate(-2 199 164)">ALL ACCESS</text></g>
+          <g class="tote-item i1" filter="url(#drop)">
+            <g transform="rotate(-12 150 170)"><rect x="84" y="78" width="132" height="168" rx="3" fill="#fbfaf6"/><image href="assets/projects/rush-01-sm.jpg" x="92" y="86" width="116" height="138" preserveAspectRatio="xMidYMid slice"/></g>
+          </g>
+          <g class="tote-item i2" filter="url(#drop)">
+            <g transform="rotate(10 266 162)"><rect x="196" y="70" width="138" height="176" rx="3" fill="#fbfaf6"/><image href="assets/projects/rush-02-sm.jpg" x="204" y="78" width="122" height="144" preserveAspectRatio="xMidYMid slice"/></g>
+          </g>
+          <g class="tote-item i3" filter="url(#drop)">
+            <g transform="rotate(-3 210 180)"><rect x="160" y="112" width="102" height="136" rx="7" fill="#17130e"/><rect x="166" y="118" width="90" height="124" rx="5" fill="none" stroke="#6e5634" stroke-width="1"/><text x="211" y="168" text-anchor="middle" fill="#c9a96b" font-family="Pinyon Script, cursive" font-size="25">Rush4Rush</text><text x="211" y="192" text-anchor="middle" fill="#e9dcc2" font-family="Archivo Black, sans-serif" font-size="10" letter-spacing="3">ALL ACCESS</text></g>
+          </g>
+
+          <!-- side gusset for depth -->
+          <path d="M352 192 L372 204 Q376 340 380 468 Q382 506 344 516 Q366 508 364 470 Q356 330 352 192 Z" fill="url(#gusset)" filter="url(#weave)"/>
 
           <!-- front panel -->
-          <path d="M58 168 L342 168 Q352 330 366 486 Q368 500 352 502 L48 502 Q32 500 34 486 Q48 330 58 168 Z" fill="url(#canvasFront)" filter="url(#canvasTex)"/>
+          <use href="#frontShape" fill="url(#frontLight)" filter="url(#weave)"/>
           <g clip-path="url(#frontClip)">
-            <rect x="30" y="160" width="340" height="350" fill="url(#canvasShade)"/>
-            <!-- soft folds -->
-            <path d="M150 170 C 140 280, 160 400, 140 502" stroke="#000" stroke-opacity=".05" stroke-width="18" fill="none" filter="url(#soft)"/>
-            <path d="M268 170 C 282 300, 258 420, 276 502" stroke="#fff" stroke-opacity=".5" stroke-width="16" fill="none" filter="url(#soft)"/>
-            <!-- hem -->
-            <rect x="40" y="168" width="320" height="24" fill="#000" opacity=".05"/>
-            <path d="M60 186 L340 186" stroke="#a69d8b" stroke-width="1.2" stroke-dasharray="5 4"/>
-            <!-- print -->
-            <g filter="url(#print)" fill="#1b1916" opacity=".88">
-              <text x="200" y="350" text-anchor="middle" font-family="Archivo Black, sans-serif" font-size="46" letter-spacing="2">RUSH</text>
-              <text x="200" y="392" text-anchor="middle" font-family="Pinyon Script, cursive" font-size="40" fill="#8c7046">for</text>
-              <text x="200" y="440" text-anchor="middle" font-family="Archivo Black, sans-serif" font-size="46" letter-spacing="2">RUSH</text>
+            <rect x="40" y="186" width="340" height="340" fill="#fbf8f1" filter="url(#wrinkle)" opacity=".5" style="mix-blend-mode: multiply"/>
+            <rect x="40" y="186" width="340" height="340" fill="url(#vshade)"/>
+            <!-- shadow the contents throw into the opening -->
+            <ellipse cx="210" cy="198" rx="150" ry="16" fill="#3a3024" opacity=".22" filter="url(#blur10)"/>
+            <!-- weight of the photos pulls soft folds -->
+            <path d="M120 214 C 132 300, 112 400, 128 516" stroke="#3a3024" stroke-opacity=".10" stroke-width="16" fill="none" filter="url(#blur10)"/>
+            <path d="M136 214 C 148 300, 128 400, 144 516" stroke="#fff" stroke-opacity=".35" stroke-width="10" fill="none" filter="url(#blur10)"/>
+            <path d="M292 214 C 280 310, 300 420, 286 516" stroke="#3a3024" stroke-opacity=".09" stroke-width="18" fill="none" filter="url(#blur10)"/>
+            <path d="M60 470 Q 210 452 360 474" stroke="#3a3024" stroke-opacity=".10" stroke-width="14" fill="none" filter="url(#blur10)"/>
+            <!-- folded hem with double stitching -->
+            <path d="M58 200 Q210 210 356 196 L356 226 Q210 238 58 228 Z" fill="#3a3024" opacity=".06"/>
+            <path d="M60 222 Q210 232 354 218" fill="none" stroke="#9e9480" stroke-width="1.1" stroke-dasharray="5 3.5"/>
+            <path d="M60 228 Q210 238 354 224" fill="none" stroke="#9e9480" stroke-width="1.1" stroke-dasharray="5 3.5"/>
+            <!-- screen print -->
+            <g filter="url(#ink)" fill="#1d1a16" opacity=".9">
+              <text x="208" y="356" text-anchor="middle" font-family="Archivo Black, sans-serif" font-size="50" letter-spacing="3">RUSH</text>
+              <text x="208" y="400" text-anchor="middle" font-family="Pinyon Script, cursive" font-size="44" fill="#7d6440">for</text>
+              <text x="208" y="452" text-anchor="middle" font-family="Archivo Black, sans-serif" font-size="50" letter-spacing="3">RUSH</text>
             </g>
           </g>
-          <!-- front handle with stitched attachments -->
-          <path d="M120 200 C 112 18, 288 18, 280 200" fill="none" stroke="#b9b1a1" stroke-width="26" stroke-linecap="butt"/>
-          <path d="M120 200 C 112 18, 288 18, 280 200" fill="none" stroke="#efe9de" stroke-width="22"/>
-          <path d="M120 200 C 112 18, 288 18, 280 200" fill="none" stroke="#b3aa98" stroke-width="1" stroke-dasharray="4 4"/>
-          <g fill="none" stroke="#a69d8b" stroke-width="1.1">
-            <rect x="110" y="190" width="20" height="22"/><path d="M110 190 L130 212 M130 190 L110 212"/>
-            <rect x="270" y="190" width="20" height="22"/><path d="M270 190 L290 212 M290 190 L270 212"/>
+
+          <!-- front handle: edge-stitched webbing, sewn on with box-X stitches -->
+          <g filter="url(#weave)">
+            <path d="M118 252 L118 214 C 112 40, 300 34, 296 212 L296 252" fill="none" stroke="#b2a893" stroke-width="28"/>
+            <path d="M118 252 L118 214 C 112 40, 300 34, 296 212 L296 252" fill="none" stroke="#f4eee2" stroke-width="24"/>
+            <path d="M118 252 L118 214 C 112 40, 300 34, 296 212 L296 252" fill="none" stroke="#a99f8a" stroke-width="19" stroke-dasharray="4 3"/>
+            <path d="M118 252 L118 214 C 112 40, 300 34, 296 212 L296 252" fill="none" stroke="#f4eee2" stroke-width="16"/>
+            <path d="M114 248 L114 214 C 109 46, 300 40, 292 212 L292 248" fill="none" stroke="#fffaf0" stroke-opacity=".6" stroke-width="3"/>
+          </g>
+          <g fill="none" stroke="#9a8f79" stroke-width="1.1">
+            <rect x="108" y="226" width="20" height="22"/><path d="M108 226 L128 248 M128 226 L108 248"/>
+            <rect x="286" y="226" width="20" height="22"/><path d="M286 226 L306 248 M306 226 L286 248"/>
           </g>
         </svg>
       </div>
@@ -536,8 +590,8 @@
   <div class="marquee dark" aria-hidden="true"><div class="marquee-track"><span>Desire</span><i>✦</i><span>Craft</span><i>✦</i><span>Exclusivity</span><i>✦</i><span>Heritage</span><i>✦</i><span>Experience</span><i>✦</i><span>Story</span><i>✦</i><span>Desire</span><i>✦</i><span>Craft</span><i>✦</i><span>Exclusivity</span><i>✦</i><span>Heritage</span><i>✦</i><span>Experience</span><i>✦</i><span>Story</span><i>✦</i><span>Desire</span><i>✦</i><span>Craft</span><i>✦</i><span>Exclusivity</span><i>✦</i><span>Heritage</span><i>✦</i><span>Experience</span><i>✦</i><span>Story</span><i>✦</i></div></div>
 
   <!-- ============ LEADERSHIP ============ -->
-  <section id="beyond" class="slide lead-sec">
-    <h2 data-split class="big-title reveal">BEYOND<br>THE BRIEF</h2>
+  <section id="leadership" class="slide lead-sec">
+    <h2 data-split class="big-title reveal">LEADERSHIP &amp;<br>COMMUNITY</h2>
     <div class="lead-grid">
       <div class="card reveal"><h4>MIS TEAM LEAD</h4><p>Marketing Executive · ELC, ExcoLearn Pvt. Ltd.</p></div>
       <div class="card reveal"><h4>VICE PRESIDENT EDUCATION</h4><p>Toastmasters</p></div>
