@@ -972,3 +972,44 @@ body.menu-open .msb-pill { background: transparent; }
   .rings .ring { stroke-dashoffset: 40; }
 }
 .folder.has-photos.opening .folder-ico .sheet { transform: translateY(-120%) scale(1.3); opacity: 0; transition: transform .6s var(--ease-out), opacity .6s .2s; }
+
+/* =========================================================
+   LEATHER FOLDERS — luxury colourways, gold foil + stitching
+   ========================================================= */
+.folder { --f1: #1f4d3d; --f2: #0f2a21; --tab: #163a2e; --foil: #d9bd84; }
+.leather-emerald  { --f1: #1f5a46; --f2: #0c2b20; --tab: #14402f; }
+.leather-oxblood  { --f1: #6e1f2a; --f2: #3a0c13; --tab: #52141d; }
+.leather-midnight { --f1: #22304f; --f2: #0d1428; --tab: #18223c; }
+.leather-cognac   { --f1: #9a5a2e; --f2: #5a2f14; --tab: #774420; }
+.leather-noir     { --f1: #2c2a27; --f2: #0e0d0c; --tab: #1d1c1a; }
+.leather-taupe    { --f1: #8c7b68; --f2: #4f4336; --tab: #6c5e4f; }
+
+.folder-ico::before {
+  background: linear-gradient(180deg, var(--tab), color-mix(in srgb, var(--tab) 80%, #000));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.12);
+}
+.folder-ico::after {
+  content: 'M · S · B';
+  display: flex; align-items: flex-end; justify-content: flex-end;
+  padding: 0 12% 9% 0; box-sizing: border-box;
+  font-family: var(--heading); font-size: 10px; letter-spacing: .28em;
+  color: transparent;
+  background:
+    radial-gradient(120% 90% at 20% 0%, rgba(255,255,255,.16), transparent 55%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='1.3' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>"),
+    linear-gradient(165deg, var(--f1), var(--f2));
+  -webkit-background-clip: padding-box; background-clip: padding-box;
+  outline: 1px dashed color-mix(in srgb, var(--foil) 70%, transparent);
+  outline-offset: -7px;
+  box-shadow: 0 24px 44px -22px rgba(0,0,0,.65), inset 0 1px 0 rgba(255,255,255,.18), inset 0 0 0 1px rgba(217,189,132,.35);
+  text-shadow: 0 0 0 var(--foil);
+}
+/* foil edge brightens on hover */
+.folder:hover .folder-ico::after { box-shadow: 0 30px 50px -22px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.22), inset 0 0 0 1px rgba(217,189,132,.7); }
+.folder > span { transition: color .3s; }
+.folder:hover > span { color: var(--f1); }
+.folder-ico .sheet:not(.photo) { background: #f6efe0; }
+.folder-ico .sheet:not(.photo):nth-child(2) { background: #e9dcc2; }
+
+footer { display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 6px 14px; }
+footer .script { font-size: 22px; color: var(--gold); letter-spacing: 0; text-transform: none; }
