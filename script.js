@@ -44,7 +44,7 @@ const GALLERIES = {
       ['safar-03', 'Project team with the client'],
       ['safar-04', 'Startup Oasis, an initiative by RIICO'],
       ['safar-05', 'SafarCabby brand creative'],
-      ['safar-06', 'Mr. Cabby campaign creative'],
+      ['safar-06', 'SafarCabby campaign creative — luxury Mercedes rentals'],
     ],
   },
   akriti: {
