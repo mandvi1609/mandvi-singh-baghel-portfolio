@@ -37,10 +37,10 @@ const GALLERIES = {
     photos: [],
   },
   rush: {
-    title: 'Rush4Rush', kicker: 'Event Experience · Universal AI University', section: '#p-rush',
+    title: 'Rush 4 Rush', kicker: 'Event Experience · Universal AI University', section: '#p-rush',
     photos: [
-      ['rush-01', 'Rush4Rush team'],
-      ['rush-02', 'Rush4Rush celebrations'],
+      ['rush-01', 'Rush 4 Rush team'],
+      ['rush-02', 'Rush 4 Rush celebrations'],
     ],
   },
   smart: {
@@ -417,7 +417,7 @@ nav.querySelectorAll('.nav-links a').forEach((a, k, all) => a.style.setProperty(
 
 const SECTIONS = [
   ['about', 'About'], ['skills', 'Skills'], ['projects', 'Projects'], ['p-apple', 'Apple'],
-  ['p-gsb', 'GSB'], ['p-safar', 'SafarCabby'], ['p-rush', 'Rush4Rush'], ['p-smart', 'SMART'],
+  ['p-gsb', 'GSB'], ['p-safar', 'SafarCabby'], ['p-rush', 'Rush 4 Rush'], ['p-smart', 'SMART'],
   ['p-akriti', 'Akriti'], ['leadership', 'Leadership'], ['contact', 'Contact'],
 ].map(([id, label]) => [document.getElementById(id), label]).filter(([el]) => el);
 
