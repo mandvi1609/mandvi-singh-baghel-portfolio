@@ -443,13 +443,18 @@ function rollSection(label) {
   if (label === currentSec) return;
   const dir = SECTIONS.findIndex(([, l]) => l === label) > SECTIONS.findIndex(([, l]) => l === currentSec) ? 1 : -1;
   currentSec = label;
-  const old = pillSec.firstElementChild;
+  // only one name may ever be on screen: drop anything still leaving, roll out the current one
+  const spans = [...pillSec.children];
+  const current = spans.pop();
+  spans.forEach((s) => s.remove());
   const next = document.createElement('span');
   next.textContent = label;
   pillSec.append(next);
-  if (reduceMotion) { old?.remove(); return; }
-  next.animate([{ transform: `translateY(${dir * 110}%)`, opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 520, easing: 'cubic-bezier(.16,1,.3,1)' });
-  old?.animate([{ transform: 'none', opacity: 1 }, { transform: `translateY(${-dir * 110}%)`, opacity: 0 }], { duration: 420, easing: 'cubic-bezier(.7,0,.84,0)' }).finished.then(() => old.remove());
+  if (!current) return;
+  if (reduceMotion) { current.remove(); return; }
+  next.animate([{ transform: `translateY(${dir * 110}%)`, opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 480, easing: 'cubic-bezier(.16,1,.3,1)' });
+  current.animate([{ transform: 'none', opacity: 1 }, { transform: `translateY(${-dir * 110}%)`, opacity: 0 }], { duration: 380, easing: 'cubic-bezier(.7,0,.84,0)', fill: 'forwards' });
+  setTimeout(() => current.remove(), 400);
 }
 
 // nav links physically fly into the pill (and back out again)
